@@ -14,7 +14,7 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // array of special characters that can be used
-var symbolList = [
+  var symbolList = [
     '@',
     '%',
     '+',
@@ -103,85 +103,71 @@ var symbolList = [
     'Z',
   ];
 
-  
+// displays whatever user inputs in the prompt text box in the console
+  function generatePassword(){
+    var userInput= prompt("how many characters would you like your password to contain?");
+    console.log(userInput); //this is a string
 
-  // shows whatever user inputs into PROMPT text box in console
+    // var passwordLength will store length of pw that user iput
+    // parses a STRING and returns on INTEGER
+    var passwordLength = parseInt(userInput);
 
-function generatePassword(){
-     var userInput= window.prompt("How many characters would you like your password to contain?");
-     console.log(userInput); //this is a string
-
-     // Variable to store length of pw from user input
-     //parse TO an integer
-     //parseInt will CONVERT or PARSE the STRING into an INTEGER
-     var passwordLength = parseInt(userInput)
-    
-    // if pw length is not a number, error will pop up and prompt will end
-     if (isNaN(passwordLength)){
-        window.alert("Error!")
+    // if the pw length the user inputs is not NOT A NUMBER, an error alert window will pop up and prompt will end
+    if (isNaN(passwordLength)){
+        window.alert("ERROR!");
         return;
-    } 
-    // conditional statement for if pw length is less than 8 OR greater than 128 characters then a ALERT box will state length requirement                              
-    if (passwordLength < 8 || passwordLength > 128){
-        alert("Password length must be between 8-28 characters!");
+
+    }
+    // if password length is less than 8 OR greater than 128 numbers than alert box will state length requirement
+    if (passwordLength < 8 || passwordLength> 127){
+        alert("Password length must be between 8-128 characters!");
         return;
     }
 
-  // to create ok or cancel prompt to store bollean of symbols, numbers, upper and lowercase
-  var userWantsNumbers = window.confirm("Click ok to include numbers in your password.")
-  var userWantsSymbols = window.confirm("Click ok to include symbols in your password.")
-  var userWantsLowercase = window.confirm("Click ok to include lowercase letters in your password.")
-  var userWantsUppercase = window.confirm("Click ok to include uppercase letters in your password.")
+    // creates ok or cancel confirm box to store boolean of symbols, numbers, upper and lowercase
+    var userWantsNumbers = confirm("Click ok to include numbers in your password.");
+    var userWantsSymbols = confirm("Click ok to include symbols in your password.");
+    var userWantsLowercase = confirm("Click ok to include lowercase in your password.");
+    var userWantsUppercase = confirm("Click ok to include uppercase in your password.");
 
-  var passwordOptionList = [];
+    var userChoiceArray = [];
 
+    // if the boolean userWantsNumbers is true, we will concatenate(JOIN) the values from the numberList and userChoiceArray and CREATE a new array
+    if(userWantsNumbers === true){
+        userChoiceArray = userChoiceArray.concat(numberList)
+    }
+    // if the boolean userWantsSymbols is true, we will concatenate(JOIN) the values from the symbolList and userChoiceArray and CREATE a new array
+    if(userWantsSymbols === true){
+        userChoiceArray = userChoiceArray.concat(symbolList)
+    }
+    // if the boolean userWantsLowercase is true, we will concatenate(JOIN) the values from the lowercaseList and userChoiceArray and CREATE a new array
+    if(userWantsLowercase === true){
+        userChoiceArray = userChoiceArray.concat(lowercaseList)
+    }
+ 
+    // if the boolean userWantsUpperCase is true, we will concatenate(JOIN) the values from the uppercaseList and userChoiceArray and CREATE a new array
+    if(userWantsUppercase === true){
+        userChoiceArray = userChoiceArray.concat(uppercaseList)
+    }
+    
+    // Will return a random integer/number from the input array
+    function getRandom(inputArray){
+        var randomInt = Math.floor(Math.random()* inputArray.length);
+        return randomInt;
+   
+    }
+  
+    var results = [];
 
-  if(userWantsNumbers === true) {
-    // we concatenate (join) the values from the numberList to the passwordOptionList and CREATE a new Array.
-    userChoiceArray = passwordOptionList.concat(numberList)
-  } 
-  if(userWantsSymbols === true) {
-    // we UserchoiceArray (join) the values from the symboLList to the passwordOptionList and CREATE a new Array.
-    userChoiceArray =  userChoiceArray.concat(symbolList)  
-  } // we concatenate (join) the values from the lowercaseList to the passwordOptionList and CREATE a new Array
-  if(userWantsLowercase === true) {
-    userChoiceArray = userChoiceArray.concat(lowercaseList)  
-  }// we concatenate (join) the values from the uppercaseList to the passwordOptionList and CREATE a new Array
-  if(userWantsUppercase === true) {
-    userChoiceArray = userChoiceArray.concat(uppercaseList)  
-  }
-
-
-  function getRandom(inputArray){
-    var randomInt = Math.floor(Math.random()* inputArray.length);
-    return randomInt;
-
-  }
-
-  var results = [];
-
-   for (var i = 0; i < passwordLength; i++){
+    // Will generate a random array from userChoiceArray and choose a random index up to passwordLength and will PUSH/add a new item to the end of the array
+    for (var i = 0; i < passwordLength; i++){
     var randomIndex = getRandom(userChoiceArray);
     console.log(userChoiceArray[randomIndex]);
     results.push(userChoiceArray[randomIndex]);
+    }
+    // will JOIN/create a new string with the results and show in console
+    console.log(results.join(''));
+    return results.join(''); 
+    //the ' ' will remove the commas in the array and have the variables listed as one with no seperation
+
   }
-  
-  console.log(results.join(''));
-  return results.join('');
-
-  
-  
-
-
-  // I need a new array called results that will accept a random value from the userChoiceArray. The number values I accept will be dependent on the passwordLength. After I have all the value in the results array, I need to find a way to combine all the values in the result array and return it as a string.
-
-}
-
-  // Is there a way to use that number to pull values out from an array and then put it in another array to generate a randomized password?
-
-
-    //whatever LOGIC we write in this for loop
-    //will run the NUMBER of times that the user asks for. (how long the password length will be)
-    // How do we GRAB THE VALUES that the user specified and RANDOMLY scramble them
-    // Now that the userChoiceArray contains all the OPTIONS that user wants in a password, how can I RANDOMIZE those values and put them into a new string or array?
-    // And then get it to display to the page?   
