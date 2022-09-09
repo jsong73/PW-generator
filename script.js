@@ -106,6 +106,7 @@ var symbolList = [
   
 
   // shows whatever user inputs into PROMPT text box in console
+
 function generatePassword(){
      var userInput= window.prompt("How many characters would you like your password to contain?");
      console.log(userInput); //this is a string
@@ -137,35 +138,50 @@ function generatePassword(){
 
   if(userWantsNumbers === true) {
     // we concatenate (join) the values from the numberList to the passwordOptionList and CREATE a new Array.
-    newArray = passwordOptionList.concat(numberList)
+    userChoiceArray = passwordOptionList.concat(numberList)
   } 
   if(userWantsSymbols === true) {
-    // we concatenate (join) the values from the symboLList to the passwordOptionList and CREATE a new Array.
-    newArray =  newArray.concat(symbolList)  
-  } 
+    // we UserchoiceArray (join) the values from the symboLList to the passwordOptionList and CREATE a new Array.
+    userChoiceArray =  userChoiceArray.concat(symbolList)  
+  } // we concatenate (join) the values from the lowercaseList to the passwordOptionList and CREATE a new Array
   if(userWantsLowercase === true) {
-    newArray = newArray.concat(lowercaseList)  
-  }
+    userChoiceArray = userChoiceArray.concat(lowercaseList)  
+  }// we concatenate (join) the values from the uppercaseList to the passwordOptionList and CREATE a new Array
   if(userWantsUppercase === true) {
-    newArray = newArray.concat(uppercaseList)  
+    userChoiceArray = userChoiceArray.concat(uppercaseList)  
+  }
+
+
+  function getRandom(inputArray){
+    var randomInt = Math.floor(Math.random()* inputArray.length);
+    return randomInt;
+
+  }
+
+  var results = [];
+
+   for (var i = 0; i < passwordLength; i++){
+    var randomIndex = getRandom(userChoiceArray);
+    console.log(userChoiceArray[randomIndex]);
+    results.push(userChoiceArray[randomIndex]);
   }
   
-  console.log(newArray);
+  console.log(results.join(''));
+  return results.join('');
+
+  
+  
+
+
+  // I need a new array called results that will accept a random value from the userChoiceArray. The number values I accept will be dependent on the passwordLength. After I have all the value in the results array, I need to find a way to combine all the values in the result array and return it as a string.
 
 }
 
-function getRandom(newArray){
-  var randomInt = math.floor(math.random()* newArray.length);
-
-}
-
-console.log(getRandom(newArray));
-
-
+  // Is there a way to use that number to pull values out from an array and then put it in another array to generate a randomized password?
 
 
     //whatever LOGIC we write in this for loop
     //will run the NUMBER of times that the user asks for. (how long the password length will be)
     // How do we GRAB THE VALUES that the user specified and RANDOMLY scramble them
-    // Now that the newArray contains all the OPTIONS that user wants in a password, how can I RANDOMIZE those values and put them into a new string or array?
+    // Now that the userChoiceArray contains all the OPTIONS that user wants in a password, how can I RANDOMIZE those values and put them into a new string or array?
     // And then get it to display to the page?   
