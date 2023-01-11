@@ -5,10 +5,10 @@ The password generator was created using HTML, CSS, and Javascript.
 This website provides users with a randomly generated and secure password based on the criteria selected by the user through a series of input and polar questions.  
 
 # User Story  
-• I want to click a button that displays an alert of 5 questions.  
-• I want to generate a password with a length of 8 to 128 characters.  
-• I want to be able to select if my password should contain numbers, symbols, uppercase letters, and/or lowercase letters.  
-• I want to receive a randomly generated password with the criteria I have selected.  
+•  As a user, I want to be able to click a button that displays an alert of 5 questions.  
+• As a user, I want to be able to generate a password with a length of 8 to 128 characters.  
+• As a user, I want to be able to select if my password should contain numbers, symbols, uppercase letters, and/or lowercase letters.  
+• As a user, I want to receive a randomly generated password with the criteria I have selected.  
 
 ![image](https://user-images.githubusercontent.com/111620893/211861984-690e3d99-6423-432d-86d0-96fa5f1a75e7.png)
 ![image](https://user-images.githubusercontent.com/111620893/211862148-3558602c-2b20-488d-850e-743ec772b9be.png)
