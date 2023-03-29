@@ -1,10 +1,10 @@
 # PW-generator  
 The password generator was created using HTML, CSS, and Javascript.  
 
-# Usage  
+## Usage  
 This website provides users with a randomly generated and secure password based on the criteria selected by the user through a series of input and polar questions.  
 
-# User Story  
+## User Story  
 •  As a user, I want to be able to click a button that displays an alert of 5 questions.  
 • As a user, I want to be able to generate a password with a length of 8 to 128 characters.  
 • As a user, I want to be able to select if my password should contain numbers, symbols, uppercase letters, and/or lowercase letters.  
